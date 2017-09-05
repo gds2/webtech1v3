@@ -15,5 +15,6 @@ public class Servlet extends HttpServlet {
         response.getWriter().write("Hello world");
         response.getWriter().write("Hello world");
         response.getWriter().write("Hello world");
+        response.getWriter().write("Hello world AGAIN");
     }
 }
