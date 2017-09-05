@@ -7,8 +7,17 @@
         <servlet-name>CheckLogin</servlet-name>
         <servlet-class>CheckLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DirectToRegister</servlet-name>
+        <servlet-class>DirectToRegister</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DirectToRegister</servlet-name>
+        <url-pattern>/DirectToRegister</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
     </servlet-mapping>
+
 </web-app>
