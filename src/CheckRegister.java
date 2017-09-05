@@ -5,17 +5,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Servlet")
+@WebServlet(name = "/CheckRegister")
 public class CheckRegister extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Gebruiker kan niet een huurder en verhuurder zijn
         if(request.getParameter("Huurder") != null & request.getParameter("Verhuurder") != null) {
-            response.sendRedirect("fouteinlog.html");
+            response.sendRedirect("fouteregistratie.html");
         }
         //Gebruiker moet een keuze maken
         else if(request.getParameter("Huurder") == null & request.getParameter("Verhuurder") == null) {
-            response.sendRedirect("fouteinlog.html");
+            response.sendRedirect("fouteregistratie.html");
         }
         //Gebruiker is een huurder
         else if(request.getParameter("Huurder") != null){

@@ -8,6 +8,14 @@
         <servlet-class>CheckLogin</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CheckRegister</servlet-name>
+        <servlet-class>CheckRegister</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckRegister</servlet-name>
+        <url-pattern>/CheckRegister</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>DirectToRegister</servlet-name>
         <servlet-class>DirectToRegister</servlet-class>
     </servlet>
