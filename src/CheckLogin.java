@@ -13,6 +13,9 @@ public class CheckLogin extends HttpServlet {
         if(name.equals("test")){
             response.sendRedirect("login.html");
         }
+        else{
+            response.sendRedirect("fouteinlog.html");
+        }
 
 
     }
