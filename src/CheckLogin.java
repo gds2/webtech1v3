@@ -1,5 +1,6 @@
 
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,9 @@ public class CheckLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("username");
         String password = request.getParameter("password");
-        if(name.equals("test") && password.equals("test")){
+        ServletContext sc = getServletContext();
+        Model model = (Model)sc.getAttribute("Model");
+        if(name.equals(model.getTest())){
             response.sendRedirect("login.html");
         }
         else {
