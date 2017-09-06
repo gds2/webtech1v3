@@ -13,13 +13,12 @@ public class Gebruiker {
     }
 
     /**
-     * Controleert of de gebruikersnaam en wachtwoord bij de gebruiker horen
-     * @param gebruikersnaam
+     * Controleert of het wachtwoord bij de gebruiker hoort
      * @param password
      * @return
      */
-    public boolean correctLogin(String gebruikersnaam, String password){
-        if(gebruikersnaam.equals(this.gebruikersnaam) && (password.equals(this.password))){
+    public boolean correctPassword (String password){
+        if(password.equals(this.password)){
             return true;
         }
         else {
@@ -27,6 +26,10 @@ public class Gebruiker {
         }
     }
 
+    /**
+     * Controleert of de gebruiker een huurder is
+     * @return
+     */
     public boolean isHuurder(){
         if(type.equals("Huurder")){
             return true;
@@ -36,6 +39,10 @@ public class Gebruiker {
         }
     }
 
+    /**
+     * Controleert of de gebruiker een verhuurder is
+     * @return
+     */
     public boolean isVerhuurder(){
         if(type.equals("Verhuurder")){
             return true;
