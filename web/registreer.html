@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Registreer</title>
-    <form method="post" action="Register">
-        <tr>
-            <td>Name</td>
-            <td><input type="text" name="username"></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="password"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Login"></td>
-        </tr>
-        <ul>
-        <input type="checkbox" name="Huurder" value="Huurder"> Huurder<br>
-        <input type="checkbox" name="Verhuurder" value="Verhuurder"> Verhuurder<br>
+    <h1>Register</h1>
+    <form method="POST" action="CheckRegister">
+
+        <b>Gebruiksnaam:</b><br>
+        <input type="text" name="username" placeholder="Gebruiksnaam" required>
+        <br>
+        <b>Wachtwoord:</b><br>
+        <input type="password" name="password" placeholder="Wachtwoord" required>
+        <br>
+        <b>Herhaal Wachtwoord:</b><br>
+        <input type="password" name="passwordRe" placeholder="Herhaal Wachtwoord" required>
+        <br><br>
+        <b>Selecteer een gebruiker type:</b><br>
+        <input type="radio" name="sortUser" value="Huurder"> Huurder<br>
+        <input type="radio" name="sortUser" value="Verhuurder"> Verhuurder<br><br>
         <input type="submit" value="Registreer">
-        </ul>
+
     </form>
 </head>
 <body>

@@ -3,4 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>CheckLogin</servlet-name>
+        <servlet-class>CheckLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DirectToRegister</servlet-name>
+        <servlet-class>DirectToRegister</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DirectToRegister</servlet-name>
+        <url-pattern>/DirectToRegister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckLogin</servlet-name>
+        <url-pattern>/CheckLogin</url-pattern>
+    </servlet-mapping>
+
 </web-app>
