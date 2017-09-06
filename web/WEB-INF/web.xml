@@ -5,27 +5,27 @@
          version="3.1">
     <servlet>
         <servlet-name>CheckLogin</servlet-name>
-        <servlet-class>Servlets.CheckLogin</servlet-class>
+        <servlet-class>CheckLogin</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CheckRegister</servlet-name>
-        <servlet-class>Servlets.CheckRegister</servlet-class>
+        <servlet-class>CheckRegister</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckRegister</servlet-name>
-        <url-pattern>/Servlets.CheckRegister</url-pattern>
+        <url-pattern>/CheckRegister</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>DirectToRegister</servlet-name>
-        <servlet-class>Servlets.DirectToRegister</servlet-class>
+        <servlet-class>DirectToRegister</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DirectToRegister</servlet-name>
-        <url-pattern>/Servlets.DirectToRegister</url-pattern>
+        <url-pattern>/DirectToRegister</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
-        <url-pattern>/Servlets.CheckLogin</url-pattern>
+        <url-pattern>/CheckLogin</url-pattern>
     </servlet-mapping>
 
 </web-app>
