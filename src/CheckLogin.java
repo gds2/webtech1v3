@@ -1,5 +1,6 @@
 
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +16,15 @@ public class CheckLogin extends HttpServlet {
         String password = request.getParameter("password");
         ServletContext sc = getServletContext();
         Model model = (Model)sc.getAttribute("Model");
-        if(model.correctLogin(gebruikersnaam,password)){
-            response.sendRedirect("login.html");
+        Gebruiker gebruiker = model.getUser(gebruikersnaam,password);
+        if(gebruiker != null){
+            if(gebruiker.isVerhuurder()){
+
+            }
+            else{
+                
+            }
+
         }
         else {
             response.sendRedirect("fouteinlog.html");

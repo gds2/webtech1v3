@@ -17,24 +17,10 @@ public class Gebruiker {
      * @param password
      * @return
      */
-    public boolean correctPassword (String password){
-        if(password.equals(this.password)){
+    public boolean correctPassword (String password) {
+        if (password.equals(this.password)) {
             return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    /**
-     * Controleert of de gebruiker een huurder is
-     * @return
-     */
-    public boolean isHuurder(){
-        if(isVerhuurder.equals("Huurder")){
-            return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -44,12 +30,7 @@ public class Gebruiker {
      * @return
      */
     public boolean isVerhuurder(){
-        if(isVerhuurder.equals("Verhuurder")){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return isVerhuurder;
     }
 
 

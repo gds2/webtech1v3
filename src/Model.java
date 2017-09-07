@@ -38,16 +38,17 @@ public class Model {
      * @param password
      * @return
      */
-    public boolean correctLogin(String gebruikersNaam, String password){
+    public Gebruiker getUser(String gebruikersNaam, String password){
         for(Gebruiker gebruiker : gebruikers){
             if(gebruiker.getGebruikersnaam().equals(gebruikersNaam)){
                 if(gebruiker.correctPassword(password)){
-                    return true;
+                    return gebruiker;
                 }
             }
         }
-        return false;
+        return null;
     }
+
 
     private Model() {
         gebruikers = new ArrayList<>();
