@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Model {
     private static Model model;
-    private ArrayList<Gebruiker> gebruikers = new ArrayList<>();
-    private ArrayList<Kamer> kamers = new ArrayList<>();
+    private static ArrayList<Gebruiker> gebruikers;
+    private static ArrayList<Kamer> kamers;
     public static Model getInstance() {
             if(model == null){
                 model = new Model();
@@ -50,6 +50,8 @@ public class Model {
     }
 
     private Model() {
+        gebruikers = new ArrayList<>();
+        kamers = new ArrayList<>();
     }
 
 }
