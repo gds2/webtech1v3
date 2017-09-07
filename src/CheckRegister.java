@@ -1,3 +1,6 @@
+
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,50 +9,50 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "/CheckRegister")
+
 public class CheckRegister extends HttpServlet {
+
+    private boolean checkError = false;
+    private boolean isVerhuurder;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        boolean error = false;
+        String name = request.getParameter("name");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String passwordRe = request.getParameter("passwordRe");
-        String sortUser = request.getParameter("sortUser");
+        String sortHuurder = request.getParameter("sortHuurder");
 
-        //Check of alle gegevens zijn ingevoerd
-        if(username == null){
-            error = true;
+        //Als 1 van de textboxen leeg is, dan meld een error
+        if(name.isEmpty()||username.isEmpty()||password.isEmpty()||passwordRe.isEmpty()||sortHuurder.isEmpty()){
+            checkError = true;
         }
-        if(password == null){
-            error = true;
-        }
-        if(passwordRe == null){
-            error = true;
-        }
-        if(sortUser == null){
-            error = true;
-        }
-        //Als we geen errors hebben dan gaan we verder met het aanmaken van de gebruiker
-        if(!error){
-            //Als de wachtwoorden niet overeen komen
-            if(password!=passwordRe){
-                error = true;
-            }
-            //Als er geen errors zijn, maak gebruiker aan en voeg toe aan gebruikers
-            if(!error){
-                //Voeg de nieuwe gebruiker toe
-                UserData.getInstance().addUser(new User(username,password,sortUser));
-            }
-            //Als de nieuwe gebruiker is toegevoegd, dan redirect naar login.html pagina
-            if(!error){
-                response.sendRedirect("login.html");
+        //Anders ga verder met controlleren
+        if(!checkError){
+            if(passwordRe.equals(password)){
+                if(sortHuurder.equals("Verhuurder")){
+                    isVerhuurder = true;
+                }else {
+                    isVerhuurder = false;
+                }
+                //Roep de servlet context aan
+                ServletContext servletContext = getServletContext();
+                //Pak de model uit de servlet context
+                Model model = (Model) servletContext.getAttribute("Model");
+                //Maak en voeg de nieuwe gebruiker toe aan de gebruikers
+                model.addGebruikers(new Gebruiker(name,username,password,isVerhuurder));
             }else {
-                response.sendRedirect("fouteregistratie.html");
-
+                checkError = true;
             }
         }
+
+        if(!checkError){
+            response.sendRedirect("login.html");
+        }else {
+            response.sendRedirect("registreer.html");
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

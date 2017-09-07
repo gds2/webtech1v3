@@ -5,25 +5,21 @@
     <title>Login</title>
 </head>
 <body>
-
-<h1>Login</h1>
-<div style="max-width: 300px;">
-    <form method="POST" action="CheckLogin">
-
-        <b>Gebruiksnaam:</b><br>
-        <input type="text" name="username" placeholder="Gebruiksnaam" required><br>
-
-        <b>Wachtwoord</b><br>
-        <input type="password" name="password" placeholder="Wachtwoord" required>
-        <br><br>
-        <input type="submit" style="float: left;" value="Login">
-    </form>
-
-    <form method="POST" style="float: right; margin-right: 100px;" action="DirectToRegister">
-        <input type="submit" value="Registreer">
-    </form>
-</div>
-
+<form method="post" action="CheckLogin">
+    <tr>
+        <td>Name</td>
+        <td><input type="text" name="username"></td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><input type="password" name="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Login"></td>
+    </tr>
+</form>
+<a href="registreer.html">Register</a>
 
 </body>
 </html>
