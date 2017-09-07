@@ -11,11 +11,11 @@ import java.io.IOException;
 @WebServlet(name = "/CheckLogin")
 public class CheckLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("username");
+        String gebruikersnaam = request.getParameter("username");
         String password = request.getParameter("password");
         ServletContext sc = getServletContext();
         Model model = (Model)sc.getAttribute("Model");
-        if(name.equals(model.getTest())){
+        if(model.correctLogin(gebruikersnaam,password)){
             response.sendRedirect("login.html");
         }
         else {
