@@ -4,10 +4,11 @@ public class Model {
     private static Model model;
     private ArrayList<Gebruiker> gebruikers = new ArrayList<>();
     private ArrayList<Kamer> kamers = new ArrayList<>();
-    private String test = "Govert";
     public static Model getInstance() {
-        if(model == null){
-            model = new Model();
+            if(model == null){
+                model = new Model();
+                Gebruiker testGebruiker = new Gebruiker("Govert de Swart","Govert","Swart",true);
+                model.addGebruikers(testGebruiker);
         }
         return model;
     }
@@ -39,7 +40,7 @@ public class Model {
      */
     public boolean correctLogin(String gebruikersNaam, String password){
         for(Gebruiker gebruiker : gebruikers){
-            if(gebruiker.getNaam().equals(gebruikersNaam)){
+            if(gebruiker.getGebruikersnaam().equals(gebruikersNaam)){
                 if(gebruiker.correctPassword(password)){
                     return true;
                 }
@@ -51,7 +52,4 @@ public class Model {
     private Model() {
     }
 
-    public String getTest() {
-        return test;
-    }
 }
