@@ -24,6 +24,11 @@ public class Kamer {
         return plaats;
     }
 
+    public String getVerHuurderNaam() {
+        return verhuurder.getNaam();
+    }
+
+
     public String getHuurderNaam() {
         return huurder.getNaam();
     }
