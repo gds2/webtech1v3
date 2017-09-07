@@ -19,6 +19,14 @@
         <servlet-name>CheckKamer</servlet-name>
         <servlet-class>CheckKamer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchRoomServlet</servlet-name>
+        <servlet-class>SearchRoomServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchRoomServlet</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckRegister</servlet-name>
         <url-pattern>/CheckRegister</url-pattern>

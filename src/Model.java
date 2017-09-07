@@ -1,3 +1,5 @@
+import sun.java2d.pipe.OutlineTextRenderer;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.Response;
 import java.io.IOException;
@@ -66,6 +68,7 @@ public class Model {
 
     public void printCertainRooms(double grootte, double maxPrijs, String plaats, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
+        boolean found = false;
         for(Kamer kamer : kamers){
             double tempGrootte = kamer.getGrootte();
             double tempMaxPrijs = kamer.getMaxprijs();
@@ -75,9 +78,13 @@ public class Model {
             if(tempGrootte == grootte || grootte == 0){
                 if(tempMaxPrijs == maxPrijs || maxPrijs == 0){
                     if(tempPlaats.equals(plaats) || plaats.isEmpty()){
+                        found = true;
                         out.write("Verhuurder:" + tempVerhuurderNaam + " Grootte:" + tempGrootte +"m2 maxprijs:" + tempMaxPrijs + "euro plaats:" + tempPlaats);
                     }
                 }
+            }
+            if(!found){
+                out.write("Geen kamers gevonden met de opgeven  criteria");
             }
 
         }
