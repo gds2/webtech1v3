@@ -7,7 +7,7 @@ public class Model {
     public static Model getInstance() {
             if(model == null){
                 model = new Model();
-                Gebruiker testGebruiker = new Gebruiker("Govert de Swart","Govert","Swart",true);
+                Gebruiker testGebruiker = new Gebruiker("Govert de Swart","Govert","Swart",false);
                 model.addGebruikers(testGebruiker);
         }
         return model;

@@ -22,7 +22,8 @@ public class CheckLogin extends HttpServlet {
 
             }
             else{
-                
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
+                rd.forward(request,response);
             }
 
         }
