@@ -2,14 +2,14 @@ public class Gebruiker {
     private String naam;
     private String gebruikersnaam;
     private String password;
-    private String type;
+    private Boolean isVerhuurder;
 
 
-    public Gebruiker(String naam, String gebruikersnaam, String password, String type) {
+    public Gebruiker(String naam, String gebruikersnaam, String password, Boolean isVerhuurder) {
         this.naam = naam;
         this.gebruikersnaam = gebruikersnaam;
         this.password = password;
-        this.type = type;
+        this.isVerhuurder = isVerhuurder;
     }
 
     /**
@@ -17,24 +17,10 @@ public class Gebruiker {
      * @param password
      * @return
      */
-    public boolean correctPassword (String password){
-        if(password.equals(this.password)){
+    public boolean correctPassword (String password) {
+        if (password.equals(this.password)) {
             return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    /**
-     * Controleert of de gebruiker een huurder is
-     * @return
-     */
-    public boolean isHuurder(){
-        if(type.equals("Huurder")){
-            return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -44,12 +30,7 @@ public class Gebruiker {
      * @return
      */
     public boolean isVerhuurder(){
-        if(type.equals("Verhuurder")){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return isVerhuurder;
     }
 
 

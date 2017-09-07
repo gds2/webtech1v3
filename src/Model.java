@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public class Model {
     private static Model model;
-    private ArrayList<Gebruiker> gebruikers = new ArrayList<>();
-    private ArrayList<Kamer> kamers = new ArrayList<>();
-    private String test = "Govert";
+    private static ArrayList<Gebruiker> gebruikers;
+    private static ArrayList<Kamer> kamers;
     public static Model getInstance() {
-        if(model == null){
-            model = new Model();
+            if(model == null){
+                model = new Model();
+                Gebruiker testGebruiker = new Gebruiker("Govert de Swart","Govert","Swart",false);
+                model.addGebruikers(testGebruiker);
         }
         return model;
     }
@@ -37,21 +38,21 @@ public class Model {
      * @param password
      * @return
      */
-    public boolean correctLogin(String gebruikersNaam, String password){
+    public Gebruiker getUser(String gebruikersNaam, String password){
         for(Gebruiker gebruiker : gebruikers){
-            if(gebruiker.getNaam().equals(gebruikersNaam)){
+            if(gebruiker.getGebruikersnaam().equals(gebruikersNaam)){
                 if(gebruiker.correctPassword(password)){
-                    return true;
+                    return gebruiker;
                 }
             }
         }
-        return false;
+        return null;
     }
+
 
     private Model() {
+        gebruikers = new ArrayList<>();
+        kamers = new ArrayList<>();
     }
 
-    public String getTest() {
-        return test;
-    }
 }

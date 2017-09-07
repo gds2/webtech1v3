@@ -15,6 +15,10 @@
         <servlet-name>CheckRegister</servlet-name>
         <servlet-class>CheckRegister</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckKamer</servlet-name>
+        <servlet-class>CheckKamer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckRegister</servlet-name>
         <url-pattern>/CheckRegister</url-pattern>
@@ -22,6 +26,10 @@
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckKamer</servlet-name>
+        <url-pattern>/CheckKamer</url-pattern>
     </servlet-mapping>
     <listener>
         <listener-class>ServletListener</listener-class>
