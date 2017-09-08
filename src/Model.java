@@ -20,15 +20,6 @@ public class Model {
         }
         return model;
     }
-
-    public ArrayList<Gebruiker> getGebruikers() {
-        return gebruikers;
-    }
-
-    public ArrayList<Kamer> getKamers() {
-        return kamers;
-    }
-
     /**
      * Voeg een gebruiker toe
      *
@@ -66,28 +57,44 @@ public class Model {
         kamers = new ArrayList<>();
     }
 
-    public void printCertainRooms(double grootte, double maxPrijs, String plaats, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        boolean found = false;
+    /**
+     * Haal een string op die kamers bevat met de opgegeven criteria
+     * @param grootte
+     * @param maxPrijs
+     * @param plaats
+     * @return
+     */
+    public String getCertainRooms(double grootte, double maxPrijs, String plaats)  {
+        String result = "";
         for(Kamer kamer : kamers){
             double tempGrootte = kamer.getGrootte();
             double tempMaxPrijs = kamer.getMaxprijs();
             String tempPlaats = kamer.getPlaats();
-            //String tempHuurderNaam = kamer.getHuurderNaam();
             String tempVerhuurderNaam = kamer.getVerHuurderNaam();
-            if(tempGrootte == grootte || grootte == 0){
-                if(tempMaxPrijs == maxPrijs || maxPrijs == 0){
-                    if(tempPlaats.equals(plaats) || plaats.isEmpty()){
-                        found = true;
-                        out.write("Verhuurder:" + tempVerhuurderNaam + " Grootte:" + tempGrootte +"m2 maxprijs:" + tempMaxPrijs + "euro plaats:" + tempPlaats);
+            if(tempGrootte == grootte){
+                if(tempMaxPrijs == maxPrijs){
+                    if(tempPlaats.equals(plaats)){
+                        result = result + "Verhuurder:" + tempVerhuurderNaam + ";Grootte:" + tempGrootte +" m2;Maxprijs:" + tempMaxPrijs + " euro;plaats:" + tempPlaats + "\n";
                     }
                 }
             }
-            if(!found){
-                out.write("Geen kamers gevonden met de opgeven  criteria");
-            }
-
         }
+        if(result.isEmpty()){
+            return "Geen kamers gevonden met de opgeven  criteria";
+        }
+        return result;
+    }
+
+    /**
+     * Geeft een string met de gevens van alle gebruikers
+     * @return
+     */
+    public String getAllUsers(){
+        String result = "";
+        for(Gebruiker gebruiker : gebruikers){
+            result = result + gebruiker.toString() + "\n";
+        }
+        return result;
     }
 
 }

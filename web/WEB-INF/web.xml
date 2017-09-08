@@ -39,6 +39,14 @@
         <servlet-name>CheckKamer</servlet-name>
         <url-pattern>/CheckKamer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Beheer</servlet-name>
+        <servlet-class>ShowPersonsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Beheer</servlet-name>
+        <url-pattern>/Beheer</url-pattern>
+    </servlet-mapping>
     <listener>
         <listener-class>ServletListener</listener-class>
     </listener>

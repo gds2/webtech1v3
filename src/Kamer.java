@@ -28,7 +28,6 @@ public class Kamer {
         return verhuurder.getNaam();
     }
 
-
     public String getHuurderNaam() {
         return huurder.getNaam();
     }
