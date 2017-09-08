@@ -9,12 +9,19 @@ import java.io.IOException;
 
 @WebServlet(name = "/Beheer")
 public class ShowPersonsServlet extends HttpServlet {
+    private Model model;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        model = (Model)getServletContext().getAttribute("Model");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Model model = (Model)getServletContext().getAttribute("Model");
         response.getWriter().println(model.getAllUsers());
     }
 }

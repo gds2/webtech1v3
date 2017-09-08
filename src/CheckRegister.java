@@ -12,8 +12,15 @@ import java.io.IOException;
 
 public class CheckRegister extends HttpServlet {
 
-    private boolean checkError = false;
+    private boolean checkError;
     private boolean isVerhuurder;
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        checkError = false;
+    }
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String name = request.getParameter("name");
