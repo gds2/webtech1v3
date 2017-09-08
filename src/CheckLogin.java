@@ -1,5 +1,7 @@
 
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,28 +13,41 @@ import java.io.IOException;
 
 @WebServlet(name = "/CheckLogin")
 public class CheckLogin extends HttpServlet {
+    private Model model;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ServletContext sc = getServletContext();
+        model = (Model)sc.getAttribute("Model");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String gebruikersnaam = request.getParameter("username");
         String password = request.getParameter("password");
-        ServletContext sc = getServletContext();
-        Model model = (Model)sc.getAttribute("Model");
+        //Haal de gebruiker op die bij de username en password horen
         Gebruiker gebruiker = model.getUser(gebruikersnaam,password);
+        //Bepaal naar welke pagina de gebruiker wordt gestuurd
         if(gebruiker != null){
             if(gebruiker.isVerhuurder()){
 
             }
             else{
+                //Forward de huurder naar de bijbehorende huurder.html
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");
                 rd.forward(request,response);
             }
 
         }
         else {
+            //Redirect de gebruiker naar de fouteinlogpagina
             response.sendRedirect("fouteinlog.html");
         }
 
 
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

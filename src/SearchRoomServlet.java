@@ -10,14 +10,21 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "/Search")
 public class SearchRoomServlet extends HttpServlet {
+    private Model model;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        model = (Model)getServletContext().getAttribute("Model");
+
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
-        Model model = (Model)getServletContext().getAttribute("Model");
         double grootte = Double.parseDouble(request.getParameter("Grootte"));
         double maxprijs = Double.parseDouble(request.getParameter("Maxprijs"));
         String plaats = request.getParameter("Plaats");

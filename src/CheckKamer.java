@@ -1,3 +1,4 @@
+import javax.jws.WebParam;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,17 @@ import java.io.IOException;
 
 @WebServlet(name = "/CheckKamer")
 public class CheckKamer extends HttpServlet {
-    private boolean checkError = false;
+    private boolean checkError;
+    private Model model;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        checkError = false;
+        ServletContext servletContext = getServletContext();
+        model = (Model) servletContext.getAttribute("Model");
+
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,8 +34,6 @@ public class CheckKamer extends HttpServlet {
         }
 
         if(!checkError){
-            ServletContext servletContext = getServletContext();
-            Model model = (Model) servletContext.getAttribute("Model");
             //model.addKamer(new Kamer(grootte,maxprijs,plaats,new Gebruiker(verhuurder)));
         }
     }
