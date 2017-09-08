@@ -33,7 +33,19 @@ public class Gebruiker {
         return isVerhuurder;
     }
 
-
+    /**
+     * Zet de gevens van de gebruiker om in een string
+     * @return
+     */
+    @Override
+    public String toString() {
+        if(isVerhuurder) {
+            return "Naam:" + naam + ";Gebruikersnaam:" + gebruikersnaam + ";Rol:Verhuurder";
+        }
+        else{
+            return "Naam:" + naam + ";Gebruikersnaam:" + gebruikersnaam + ";Rol:Huurder";
+        }
+    }
 
     public String getNaam() {
         return naam;
