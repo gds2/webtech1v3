@@ -55,4 +55,6 @@ public class Gebruiker {
         return gebruikersnaam;
     }
 
+    public boolean getIsVerhuurder(){ return isVerhuurder; }
+
 }

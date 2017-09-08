@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "/CheckLogin")
@@ -18,8 +19,13 @@ public class CheckLogin extends HttpServlet {
         Model model = (Model)sc.getAttribute("Model");
         Gebruiker gebruiker = model.getUser(gebruikersnaam,password);
         if(gebruiker != null){
+            //Wanner de gebruiker is ingelogd, dan maken we een sessie aan
+            HttpSession loginSession = request.getSession();
+            //Voeg de gebruiker toe aan de sessie
+            loginSession.setAttribute("gebruiker",gebruiker);
             if(gebruiker.isVerhuurder()){
-
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
+                rd.forward(request,response);
             }
             else{
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/huurder.html");

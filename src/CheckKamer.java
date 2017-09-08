@@ -25,7 +25,8 @@ public class CheckKamer extends HttpServlet {
         if(!checkError){
             ServletContext servletContext = getServletContext();
             Model model = (Model) servletContext.getAttribute("Model");
-            //model.addKamer(new Kamer(grootte,maxprijs,plaats,new Gebruiker(verhuurder)));
+            //Voeg een nieuwe kamer toe met de gegevens die ingevoerd zijn + de sessie waarin de gebruiker is ingelogd
+            model.addKamer(new Kamer(grootte,maxprijs,plaats, (Gebruiker) req.getSession().getAttribute("gebruiker")));
         }
     }
 }
