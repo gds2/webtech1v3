@@ -71,12 +71,8 @@ public class Model {
             double tempMaxPrijs = kamer.getMaxprijs();
             String tempPlaats = kamer.getPlaats();
             String tempVerhuurderNaam = kamer.getVerHuurderNaam();
-            if(tempGrootte == grootte){
-                if(tempMaxPrijs == maxPrijs){
-                    if(tempPlaats.equals(plaats)){
-                        result = result + "Verhuurder:" + tempVerhuurderNaam + ";Grootte:" + tempGrootte +" m2;Maxprijs:" + tempMaxPrijs + " euro;plaats:" + tempPlaats + "\n";
-                    }
-                }
+            if(tempGrootte == grootte && tempMaxPrijs== maxPrijs && tempPlaats.equals(plaats)){
+                result = result + "Verhuurder:" + tempVerhuurderNaam + ";Grootte:" + tempGrootte +" m2;Maxprijs:" + tempMaxPrijs + " euro;plaats:" + tempPlaats + "\n";
             }
         }
         if(result.isEmpty()){
