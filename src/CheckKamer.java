@@ -9,7 +9,16 @@ import java.io.IOException;
 
 @WebServlet(name = "/CheckKamer")
 public class CheckKamer extends HttpServlet {
-    private boolean checkError = false;
+    private boolean checkError;
+    private Model model;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ServletContext servletContext = getServletContext();
+        model = (Model) servletContext.getAttribute("Model");
+        checkError = false;
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,8 +32,7 @@ public class CheckKamer extends HttpServlet {
         }
 
         if(!checkError){
-            ServletContext servletContext = getServletContext();
-            Model model = (Model) servletContext.getAttribute("Model");
+
             //Voeg een nieuwe kamer toe met de gegevens die ingevoerd zijn + de sessie waarin de gebruiker is ingelogd
             model.addKamer(new Kamer(grootte,maxprijs,plaats, (Gebruiker) req.getSession().getAttribute("gebruiker")));
         }
