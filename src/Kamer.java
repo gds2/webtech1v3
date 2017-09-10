@@ -2,7 +2,6 @@ public class Kamer {
    private double grootte;
    private double maxprijs;
    private String plaats;
-   private Gebruiker huurder;
    private Gebruiker verhuurder;
 
     public Kamer(double grootte, double maxprijs, String plaats, Gebruiker verhuurder) {
@@ -28,10 +27,8 @@ public class Kamer {
         return verhuurder.getNaam();
     }
 
-    public String getHuurderNaam() {
-        return huurder.getNaam();
-    }
-    public void setHuurder(Gebruiker huurder) {
-        this.huurder = huurder;
+    @Override
+    public String toString() {
+        return "Verhuurder:" + verhuurder.getNaam() + ";Grootte:" + grootte +" vierkante meter;Maxprijs:" + maxprijs + " euro;plaats:" + plaats;
     }
 }

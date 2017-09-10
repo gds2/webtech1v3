@@ -47,6 +47,14 @@
         <servlet-name>Beheer</servlet-name>
         <url-pattern>/Beheer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>verhuurder</servlet-name>
+        <servlet-class>ShowRoomsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>verhuurder</servlet-name>
+        <url-pattern>/verhuurder</url-pattern>
+    </servlet-mapping>
     <listener>
         <listener-class>ServletListener</listener-class>
     </listener>

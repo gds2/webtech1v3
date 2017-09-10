@@ -1,9 +1,4 @@
-import sun.java2d.pipe.OutlineTextRenderer;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Model {
@@ -14,7 +9,7 @@ public class Model {
     public static Model getInstance() {
         if (model == null) {
             model = new Model();
-            Gebruiker testGebruiker = new Gebruiker("Govert de Swart", "Govert", "Swart", false);
+            Gebruiker testGebruiker = new Gebruiker("Govert de Swart", "Govert", "Swart", true);
             model.addGebruikers(testGebruiker);
             model.addKamer(new Kamer(100,20,"Almelo",testGebruiker));
         }
@@ -70,13 +65,27 @@ public class Model {
             double tempGrootte = kamer.getGrootte();
             double tempMaxPrijs = kamer.getMaxprijs();
             String tempPlaats = kamer.getPlaats();
-            String tempVerhuurderNaam = kamer.getVerHuurderNaam();
             if(tempGrootte == grootte && tempMaxPrijs== maxPrijs && tempPlaats.equals(plaats)){
-                result = result + "Verhuurder:" + tempVerhuurderNaam + ";Grootte:" + tempGrootte +" m2;Maxprijs:" + tempMaxPrijs + " euro;plaats:" + tempPlaats + "\n";
+                result = result + kamer.toString() + "\n";
             }
         }
         if(result.isEmpty()){
-            return "Geen kamers gevonden met de opgeven  criteria";
+            return "Geen kamers gevonden met de opgeven criteria";
+        }
+        return result;
+    }
+
+    /**
+     * Haal een string op die alle kamers bevat
+     * @return
+     */
+    public String getAllRooms(){
+        String result = "";
+        for(Kamer kamer : kamers){
+            result = result + kamer.toString() + "\n";
+        }
+        if(result.isEmpty()){
+            return "Er zijn geen kamers om te weergeven";
         }
         return result;
     }

@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,9 +33,10 @@ public class CheckKamer extends HttpServlet {
         }
 
         if(!checkError){
-
             //Voeg een nieuwe kamer toe met de gegevens die ingevoerd zijn + de sessie waarin de gebruiker is ingelogd
             model.addKamer(new Kamer(grootte,maxprijs,plaats, (Gebruiker) req.getSession().getAttribute("gebruiker")));
+            RequestDispatcher  rd = getServletContext().getRequestDispatcher("/verhuurder");
+            rd.forward(req,resp);
         }
     }
 }
