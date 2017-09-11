@@ -9,9 +9,6 @@ public class Model {
     public static Model getInstance() {
         if (model == null) {
             model = new Model();
-            Gebruiker testGebruiker = new Gebruiker("Govert de Swart", "Govert", "Swart", true);
-            model.addGebruikers(testGebruiker);
-            model.addKamer(new Kamer(100,20,"Almelo",testGebruiker));
         }
         return model;
     }
@@ -76,15 +73,17 @@ public class Model {
     }
 
     /**
-     * Haal een string op die alle kamers bevat
+     * Haal een string op die alle kamers bevat van de opgeven verhuurder
      * @return
      */
-    public String getAllRooms(){
+    public String getAllRoomsFromUser(Gebruiker verhuurder) {
         String result = "";
-        for(Kamer kamer : kamers){
-            result = result + kamer.toString() + "\n";
+        for (Kamer kamer : kamers) {
+            if (kamer.zelfdeGebruiker(verhuurder)) {
+                result = result + kamer.toString() + "<br>";
+            }
         }
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return "Er zijn geen kamers om te weergeven";
         }
         return result;

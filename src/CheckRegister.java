@@ -51,9 +51,10 @@ public class CheckRegister extends HttpServlet {
                 checkError = true;
             }
         }
-
+        //Stuur de gebruiker terug naar de login pagina als het registreren gelukt is
         if(!checkError){
             response.sendRedirect("login.html");
+            //Stuur de gebruiker terug naar de registreer pagina als het registreren niet gelukt is
         }else {
             response.sendRedirect("registreer.html");
         }

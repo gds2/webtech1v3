@@ -23,12 +23,26 @@ public class Kamer {
         return plaats;
     }
 
-    public String getVerHuurderNaam() {
-        return verhuurder.getNaam();
-    }
-
+    /**
+     * Geeft een string terug met alle benodigde informatie van een kamer
+     * @return
+     */
     @Override
     public String toString() {
         return "Verhuurder:" + verhuurder.getNaam() + ";Grootte:" + grootte +" vierkante meter;Maxprijs:" + maxprijs + " euro;plaats:" + plaats;
+    }
+
+    /**
+     * Controleert of de opgegeven verhuurder hetzelfde is als de verhuurder van de huidige kamer
+     * @param gebruiker
+     * @return
+     */
+    boolean zelfdeGebruiker(Gebruiker gebruiker){
+        if(gebruiker.getGebruikersnaam().equals(this.verhuurder.getGebruikersnaam())){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

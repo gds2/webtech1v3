@@ -14,10 +14,11 @@ public class Gebruiker {
 
     /**
      * Controleert of het wachtwoord bij de gebruiker hoort
+     *
      * @param password
      * @return
      */
-    public boolean correctPassword (String password) {
+    public boolean correctPassword(String password) {
         if (password.equals(this.password)) {
             return true;
         } else {
@@ -27,22 +28,23 @@ public class Gebruiker {
 
     /**
      * Controleert of de gebruiker een verhuurder is
+     *
      * @return
      */
-    public boolean isVerhuurder(){
+    public boolean isVerhuurder() {
         return isVerhuurder;
     }
 
     /**
      * Zet de gevens van de gebruiker om in een string
+     *
      * @return
      */
     @Override
     public String toString() {
-        if(isVerhuurder) {
+        if (isVerhuurder) {
             return "Naam:" + naam + ";Gebruikersnaam:" + gebruikersnaam + ";Rol:Verhuurder";
-        }
-        else{
+        } else {
             return "Naam:" + naam + ";Gebruikersnaam:" + gebruikersnaam + ";Rol:Huurder";
         }
     }
@@ -54,7 +56,4 @@ public class Gebruiker {
     public String getGebruikersnaam() {
         return gebruikersnaam;
     }
-
-    public boolean getIsVerhuurder(){ return isVerhuurder; }
-
 }

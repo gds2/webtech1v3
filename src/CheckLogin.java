@@ -35,7 +35,8 @@ public class CheckLogin extends HttpServlet {
             //Voeg de gebruiker toe aan de sessie
             loginSession.setAttribute("gebruiker",gebruiker);
             if(gebruiker.isVerhuurder()){
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
+                //Forward de verhuurder naar de bijbehorende huurder.html
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/verhuurder");
                 rd.forward(request,response);
             }
             else{

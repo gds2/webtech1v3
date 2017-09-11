@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @WebServlet(name = "/CheckKamer")
 public class CheckKamer extends HttpServlet {
-    private boolean checkError;
+
     private Model model;
 
     @Override
@@ -18,18 +18,21 @@ public class CheckKamer extends HttpServlet {
         super.init();
         ServletContext servletContext = getServletContext();
         model = (Model) servletContext.getAttribute("Model");
-        checkError = false;
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        boolean checkError;
         double grootte = Double.parseDouble(req.getParameter("kGrootte"));
         double maxprijs = Double.parseDouble(req.getParameter("kMaxPrijs"));
         String plaats = req.getParameter("kPlaats");
 
         if(grootte <=0||maxprijs <=0||plaats.isEmpty()){
             checkError = true;
+        }
+        else{
+            checkError = false;
         }
 
         if(!checkError){
