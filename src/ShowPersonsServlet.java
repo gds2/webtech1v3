@@ -30,16 +30,17 @@ public class ShowPersonsServlet extends HttpServlet {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss");
         Date date = new Date();
         Cookie huidigeDatum = new Cookie("lastVisit",dateFormat.format(date));
-        huidigeDatum.setMaxAge(60*60*24);
         response.addCookie(huidigeDatum);
         //Kijk door de cookies naar de tijd van wanneer de gebruiker voor het laatst de pagina bezocht heeft
         Cookie[] cookies = request.getCookies();
         int aantalKeerBezocht = 1;
         for(Cookie cookie : cookies) {
+            //Kijk door de cookies naar de tijd van wanneer de gebruiker voor het laatst de pagina bezocht heeft
             if(cookie.getName().equals("lastVisit")) {
                 //Print de tijd van het laatste bezoek
                 response.getWriter().println("Deze pagina heeft u voor het laatst bezocht op " + cookie.getValue());
             }
+            //Haal het aantal keer op dat de gebruiker de pagina bezocht heeft
             if(cookie.getName().equals("visitAmount")){
                 aantalKeerBezocht = Integer.parseInt(cookie.getValue());
                 aantalKeerBezocht++;
