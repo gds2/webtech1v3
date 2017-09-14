@@ -24,10 +24,18 @@ public class SearchRoomServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Haal de gegevens op
+        try {
+            double grootte = Double.parseDouble(request.getParameter("Grootte"));
+            double maxprijs = Double.parseDouble(request.getParameter("Maxprijs"));
+            String plaats = request.getParameter("Plaats");
+            response.getWriter().write(model.getCertainRooms(grootte,maxprijs,plaats));
+        }
+        //Vang een numberformat eception voor wanneer een gebruiker niet een cijfer opgeeft bij de grootte en max prijs
+        catch (NumberFormatException  er){
+            response.getWriter().println("Voer een cijfer in voor de grootte en de max prijs");
+        }
 
-        double grootte = Double.parseDouble(request.getParameter("Grootte"));
-        double maxprijs = Double.parseDouble(request.getParameter("Maxprijs"));
-        String plaats = request.getParameter("Plaats");
-        response.getWriter().write(model.getCertainRooms(grootte,maxprijs,plaats));
+
     }
 }
