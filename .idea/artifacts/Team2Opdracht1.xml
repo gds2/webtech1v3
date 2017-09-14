@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="Webtech1v3:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Webtech1v3_war_exploded</output-path>
+  <artifact type="exploded-war" build-on-make="true" name="Team2Opdracht1">
+    <output-path>$PROJECT_DIR$/out/artifacts/Team2Opdracht1</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Webtech1v3/web/Web" />
       <element id="directory" name="WEB-INF">
