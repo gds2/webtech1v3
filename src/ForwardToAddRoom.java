@@ -16,7 +16,9 @@ public class ForwardToAddRoom extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Maak een RequestDispatcher voor de addroom.html
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/addroom.html");
+        //Forward de gebruiker naar de addroom.html
         rd.forward(request,response);
 
 
@@ -24,6 +26,5 @@ public class ForwardToAddRoom extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String bla = "";
     }
 }

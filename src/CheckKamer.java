@@ -27,7 +27,7 @@ public class CheckKamer extends HttpServlet {
         double grootte = Double.parseDouble(req.getParameter("kGrootte"));
         double maxprijs = Double.parseDouble(req.getParameter("kMaxPrijs"));
         String plaats = req.getParameter("kPlaats");
-
+        //Kijk of er een error is
         if(grootte <=0||maxprijs <=0||plaats.isEmpty()){
             checkError = true;
         }

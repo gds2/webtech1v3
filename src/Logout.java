@@ -10,7 +10,9 @@ import java.io.IOException;
 @WebServlet(name = "/Logout")
 public class Logout extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Invalidate de sessie
         request.getSession().invalidate();
+        //Ga terug naar de login pagina
         response.sendRedirect("login.html");
     }
 
