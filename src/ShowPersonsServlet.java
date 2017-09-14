@@ -34,12 +34,20 @@ public class ShowPersonsServlet extends HttpServlet {
         response.addCookie(huidigeDatum);
         //Kijk door de cookies naar de tijd van wanneer de gebruiker voor het laatst de pagina bezocht heeft
         Cookie[] cookies = request.getCookies();
+        int aantalKeerBezocht = 1;
         for(Cookie cookie : cookies) {
             if(cookie.getName().equals("lastVisit")) {
                 //Print de tijd van het laatste bezoek
                 response.getWriter().println("Deze pagina heeft u voor het laatst bezocht op " + cookie.getValue());
             }
+            if(cookie.getName().equals("visitAmount")){
+                aantalKeerBezocht = Integer.parseInt(cookie.getValue());
+                aantalKeerBezocht++;
+                response.getWriter().println("Deze pagina heeft u " + cookie.getValue() + " keer bezocht");
+            }
         }
+        Cookie aantalKeerBezochtCookie = new Cookie("visitAmount",Integer.toString(aantalKeerBezocht));
+        response.addCookie(aantalKeerBezochtCookie);
         //Print de gegevens van alle gebruikers
         response.getWriter().println(model.getAllUsers());
 
