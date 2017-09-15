@@ -31,7 +31,7 @@ public class SearchRoomServlet extends HttpServlet {
             String plaats = request.getParameter("Plaats");
             response.getWriter().write(model.getCertainRooms(grootte,maxprijs,plaats));
         }
-        //Vang een numberformat eception voor wanneer een gebruiker niet een cijfer opgeeft bij de grootte en max prijs
+        //Vang een numberformat exeption voor wanneer een gebruiker niet een cijfer opgeeft bij de grootte en max prijs
         catch (NumberFormatException  er){
             response.getWriter().println("Voer een cijfer in voor de grootte en de max prijs");
         }
